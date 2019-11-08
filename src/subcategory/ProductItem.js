@@ -61,14 +61,15 @@ import ProductThumbnail from 'react-storefront/ProductThumbnail'
 export default class ProductItem extends Component {
   static propTypes = {
     product: PropTypes.object.isRequired,
-    classes: PropTypes.object
+    classes: PropTypes.object,
+    rootStyle: PropTypes.string
   }
 
   render() {
-    const { index, product, classes } = this.props
+    const { index, product, classes, rootStyle } = this.props
 
     return (
-      <div id={`item-${index}`} className={classes.root}>
+      <div id={`item-${index}`} className={rootStyle || classes.root}>
         <Vbox alignItems="stretch">
           <div className={classes.thumb}>
             <Track

@@ -16,7 +16,7 @@ const Home = inject('app')(observer(({ app }) => {
   return (
     <Container>
       <Row>
-        <SlideshowGallery 
+        <SlideshowGallery
           elements={[
             {
               backgroundImage: 'bannerH.jpg',

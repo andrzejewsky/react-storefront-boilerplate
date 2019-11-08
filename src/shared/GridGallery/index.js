@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core'
-import GridGalleryContext from './GridGalleryContext';
 
 const styles = theme => ({
   root: {
-    margin: '10rem auto',
+    margin: '5rem auto',
     textAlign: 'center'
   },
   title: theme.section.title,
@@ -14,7 +13,8 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    marginTop: '3.75rem'
+    marginTop: '3.75rem',
+    margin: '0 -10px'
   }
 })
 
@@ -23,9 +23,7 @@ const GridGallery = ({ title = null, description = null, size, children, maxWidt
     { typeof title === 'string' && title.length > 0 && <div className={classes.title}>{title}</div> }
     { typeof description === 'string' && description.length > 0 && <div className={classes.description}>{description}</div> }
     <div className={classes.gridsContainer}>
-      <GridGalleryContext.Provider value={{ size }}>
-        {children}
-      </GridGalleryContext.Provider>
+      {children}
     </div>
   </section>
 )

@@ -51,7 +51,7 @@ import SearchButton from 'react-storefront/SearchButton'
   },
 
   logo: {
-    width: 150
+    width: 120
   }
 }))
 @inject('app')

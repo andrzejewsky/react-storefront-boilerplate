@@ -18,7 +18,7 @@ Our goal is to build a vibrant open source community around the project and soli
 
 This is an example e-shop built on top of [React Storefront](https://github.com/react-storefront-community/react-storefront). Feel free to use it as a base for your implementation!
 
-![Boilerplate screenshot](https://divante.com/github/react-storefront/boilerplate-screenshot.png)
+![Boilerplate screenshot](./page.png)
 
 For detailed documentation, see the [React Storefront Docs](https://docs.reactstorefront.io).
 

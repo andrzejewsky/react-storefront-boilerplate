@@ -6,7 +6,7 @@ const styles = theme => ({
     width: '100%',
     position: 'absolute',
     left: 0,
-    bottom: '50px',
+    bottom: '10%',
     display: 'flex',
     justifyContent: 'center'
   },
@@ -32,7 +32,7 @@ const SlideshowBullets = ({ elements, selectSlide, activeSlide, classes }) => (
   <div className={classes.root}>
     {elements.map((element, key) => (
       <span
-        key={key} 
+        key={key}
         onClick={() => selectSlide(key)}
         className={`${classes.element} ${activeSlide === key ? classes.active : classes.inActive}`}
       />

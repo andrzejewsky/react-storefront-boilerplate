@@ -1,13 +1,13 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core'
 import Container from 'react-storefront/Container'
-import classnames from 'classnames'
 import mobileAppImage from './mobile-app.png'
-import buttonApple from './apple.png'
-import buttonGoogle from './google.png'
+import pwaLogo from './pwa-logo.png'
 
 const styles = theme => ({
-  root: {},
+  root: {
+    marginTop: '60px'
+  },
   container: {
     display: 'flex',
     justifyContent: 'space-between'
@@ -43,22 +43,20 @@ const styles = theme => ({
       margin: '5px 10px'
     }
   },
-  buttonApp: {
-    background: `url('${buttonApple}') no-repeat`,
-    padding: '23px 48px',
-    cursor: 'pointer',
-    color: 'transparent',
-    border: 0,
-    '&:focus': {
-      outline: 'none'
-    }
+  pwa: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end'
   },
-  buttonApple: {
-    background: `url('${buttonApple}') no-repeat`
+  pwaPowered: {
+    color: '#7d838c',
+    fontStyle: 'italic'
   },
-  buttonGoogle: {
-    background: `url('${buttonGoogle}') no-repeat`
-  }
+  pwaLogo: {
+    width: '50px',
+    height: '50px',
+    margin: '0 15px'
+  },
 })
 
 const MobileAppBanner = ({ classes }) => (
@@ -66,10 +64,10 @@ const MobileAppBanner = ({ classes }) => (
     <Container className={classes.container}>
       <div className={classes.content}>
         <div className={classes.subtitle}>Fashion to Take Away</div>
-        <div className={classes.title}>Download our application to your mobile</div>
-        <div className={classes.buttons}>
-          <button className={classnames(classes.buttonApp, classes.buttonApple)}>open app store</button>
-          <button className={classnames(classes.buttonApp, classes.buttonGoogle)}>open google play</button>
+        <div className={classes.title}>You can install this Progressive Web App on your device’s Home Screen!</div>
+        <div className={classes.pwa}>
+        <div className={classes.pwaPowered}>Powered by: </div>
+          <img className={classes.pwaLogo} src={pwaLogo} alt="" />
         </div>
       </div>
       <img className={classes.appImage} src={mobileAppImage} alt="react storefront app" />

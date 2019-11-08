@@ -7,7 +7,8 @@ import SlideshowBullets from './SlideshowBullets';
 const styles = theme => ({
   root: {
     overflow: 'hidden',
-    position: 'relative'
+    position: 'relative',
+    width: '100%'
   },
   container: {
     width: '100%',
@@ -40,19 +41,17 @@ const SlideshowGallery = ({ elements, width, height, backgroundColor, slideInter
     <div
       className={classes.root}
       style={{
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `100%`,
         backgroundColor
       }}
     >
       <div className={classes.container} style={{
-        transform: `translate3d(${-offset * width}px, 0, 0)`,
+        transform: `translate3d(${-offset * 100}%, 0, 0)`,
       }}>
         {elements.map((element, key) => (
           <SlideshowElement
             key={key}
-            backgroundImage={element.backgroundImage} 
-            width={width}
+            backgroundImage={element.backgroundImage}
             height={height}
             renderComponent={element.renderComponent}
           />

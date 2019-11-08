@@ -1,15 +1,23 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withStyles } from '@material-ui/core';
-import GridGalleryContext from './GridGalleryContext';
 
 const styles = theme => ({
   root: {
     position: 'relative',
-    marginTop: '1.25rem',
+    padding: '10px',
+    flex: '0 1 50%',
+
+    [theme.breakpoints.down('xs')]: {
+      flexBasis: '100%'
+    },
+
+    '& img': {
+      width: '100%'
+    },
 
     '&:hover .rfc-grid-image': {
       opacity: 1
-    } 
+    }
   },
   description: {
     position: 'absolute',
@@ -29,8 +37,6 @@ const styles = theme => ({
 })
 
 const GridImage = ({ filename, classes, description = null }) => {
-  const { size } = useContext(GridGalleryContext)
-
   const [image, setImage] = useState(null);
 
   useEffect(() => {
@@ -43,8 +49,8 @@ const GridImage = ({ filename, classes, description = null }) => {
   }, [filename])
 
   return (
-    <div className={classes.root} style={{ width: size, height: size }}>
-      <img width={size} height={size} src={image} />
+    <div className={classes.root}>
+      <img src={image} alt="" />
       { typeof description === 'string' && description.length > 0 && (
         <div className={`rfc-grid-image ${classes.description}`}>{description}</div>
       )}

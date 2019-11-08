@@ -1,6 +1,6 @@
 import React from 'react'
 import GridGallery from "../GridGallery";
-import GridImage from "../GridGallery/GridImage";
+import GridImage from "../GridGallery/GridImage"
 
 export default () => (
   <GridGallery title="Share Your Look" description="#YOURLOOK" size={470}>

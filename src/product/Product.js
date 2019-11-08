@@ -21,6 +21,7 @@ import withPersonalization from 'react-storefront/personal/withPersonalization'
 import Recommendations from './Recommendations'
 import Lazy from 'react-storefront/Lazy'
 import ProductImages from './components/ProductImages'
+import ShareYourLook from './../shared/components/ShareYourLook';
 
 export const styles = theme => ({
   root: {
@@ -105,38 +106,42 @@ export default class Product extends Component {
                     <Hidden xsDown implementation="css">
                       <Header product={product} />
                     </Hidden>
-                    <Row className={classes.controlsRow}>
-                      <Typography variant="subtitle1" className={classnames(classes.label)}>
-                        Color:
-                      </Typography>
-                      <ColorSelector
-                        name="color"
-                        model={product.color}
-                        showSelectedText
-                        strikeThroughDisabled
-                        onSelectionChange={(e, item) => {
-                          e.preventDefault()
-                          product.color.setSelected(item)
-                          product.fetchImages()
-                        }}
-                      />
-                    </Row>
-                    <Row className={classes.controlsRow}>
-                      <Typography variant="subtitle1" className={classnames(classes.label)}>
-                        Size:
-                      </Typography>
-                      <SizeSelector name="size" model={product.size} strikeThroughDisabled />
-                    </Row>
+                    {product.color.options.length > 0 && (
+                      <Row className={classes.controlsRow}>
+                        <Typography variant="subtitle1" className={classnames(classes.label)}>
+                          Color:
+                        </Typography>
+                        <ColorSelector
+                          name="color"
+                          model={product.color}
+                          showSelectedText
+                          strikeThroughDisabled
+                          onSelectionChange={(e, item) => {
+                            e.preventDefault()
+                            product.color.setSelected(item)
+                            product.fetchImages()
+                          }}
+                        />
+                      </Row>
+                    )}
+                    {product.size.options.length > 0 && (
+                      <Row className={classes.controlsRow}>
+                        <Typography variant="subtitle1" className={classnames(classes.label)}>
+                          Size:
+                        </Typography>
+                        <SizeSelector name="size" model={product.size} strikeThroughDisabled />
+                      </Row>
+                    )}
                     <Row className={classes.controlsRow}>
                       <TabPanel>
                         <CmsSlot label="Description">{product.description}</CmsSlot>
-                        <CmsSlot label="Specs">{product.specs}</CmsSlot>
+                        <CmsSlot label="Specs">{product.specs || 'No additional attributes.'}</CmsSlot>
                         <div label="Reviews">
-                          {product.reviews.map((review, i) => (
+                          {product.reviews.length > 0 ? product.reviews.map((review, i) => (
                             <Paper key={i} className={this.props.classes.review}>
                               {review}
                             </Paper>
-                          ))}
+                          )): 'Please feel free to add a review.'}
                         </div>
                       </TabPanel>
                     </Row>
@@ -148,6 +153,10 @@ export default class Product extends Component {
                 </div>
               </div>
             </Row>
+            <Row>
+             <ShareYourLook />
+            </Row>
+            {/**
             <Lazy style={{ minHeight: 500 }} key={product.id}>
               {!amp && (
                 <Row className={classes.recommendations}>
@@ -155,6 +164,7 @@ export default class Product extends Component {
                 </Row>
               )}
             </Lazy>
+            */}
           </Container>
         </AmpForm>
       </AmpState>
